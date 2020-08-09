@@ -2,11 +2,7 @@
 include 'includes/database.php';
 
 ?>
-<html>
-<head><title></title>
-<link type="text/css" rel="stylesheet" href="css/styleindex.css" />
-</head>
-<body>
+
 <?php 
     include_once("includes/header.php");
 ?>
@@ -25,5 +21,3 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 <?php 
     include_once("includes/footer.php");
 ?>
-</body>
-</html>

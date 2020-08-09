@@ -1,3 +1,8 @@
+<html>
+<head><title></title>
+<link type="text/css" rel="stylesheet" href="css/styleindex.css" />
+</head>
+<body>
 <header id="top">
 	<img  src="images/logo.png" alt="logo" style="margin-top:10px;"/>
     <h1 >Delta <span style="color:#fe4d01;">Management<span></h1>
