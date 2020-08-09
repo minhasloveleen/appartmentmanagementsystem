@@ -47,7 +47,7 @@ body{
 	top:35px;
 	background: #000000;
 	color:white;
-	position:fixed;
+	position:absolute;
 	z-index:20;
 	height:22px;
 	width:50px;
