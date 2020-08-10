@@ -10,14 +10,7 @@ body {
   margin:0px;
 }
 
-/* Style the header */
-header {
-  background-color: #666;
-  padding: 30px;
-  text-align: center;
-  font-size: 35px;
-  color: white;
-}
+
 
 /* Create two columns/boxes that floats next to each other */
 nav {
