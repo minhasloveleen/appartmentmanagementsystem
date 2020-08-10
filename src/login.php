@@ -1,5 +1,6 @@
 <?php
-include 'includes/database.php';
+// Start the session
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,27 @@ include 'includes/database.php';
 
     <div class="app-header">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        <?php
+ $emailErr ="Email"; $pwdErr  = "Password";
+ $pwd = $email =  "Email";
+  if (isset($_POST['login'])) {
+    if (empty($_POST["email_login"])) {
+        $emailErr = "Email is required";
+      } else {
+        $email = test_input($_POST["email_login"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format";
+          }
+        
+      }
+    
+      if (empty($_POST["password_login"])) {
+        $pwdErr = "Password is required";
+      } else {
+        $pwd = test_input($_POST["password_login"]);
+      }
+  }
+  ?>   
             <img id="img1"  src="images/logo.png" />
 
             <div id="form1" class="app-header">Email or Phone<br>
@@ -28,12 +50,75 @@ include 'includes/database.php';
         </form>
     </div>
     </div>
+    <?php
+
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+  ?>
+   
     <div class="app-body">
         <div id="intro1" class="app-body">We make finding an apartment simple for you . Register now and let us find your new home!</div>
         <div id="intro2" class="app-body">Register your account</div>
         <div id="img2" class="app-body"><img src="images/sidebuilding.png" /></div>
         <div id="intro3" class="app-body">Find your Apartment today !</div>
         <div id="form3" class="app-body">
+        <?php
+        $fnameErr = $lnameErr = $ageErr = $phoneErr = $emailErr1 = $pwdErr1 = $sinErr ="";
+        $fname = $lname = $age = $phone = $email1 = $pwd1 = $sin1 ="";
+
+        if (isset($_POST['register'])) {
+            if (empty($_POST["first_name"])) {
+                $fnameErr = "Field is required";
+              } 
+             
+              else {
+                $fname = test_input($_POST["first_name"]);
+                if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
+                    $fnameErr = "Invalid";
+                  }
+              }
+              if (empty($_POST["last_name"])) {
+                $lnameErr = "Field is required";
+              } else {
+                $lname = test_input($_POST["last_name"]);
+              }
+              if (empty($_POST["phone"])) {
+                $phoneErr = "Field is required";
+              } else {
+                $phone = test_input($_POST["phone"]);
+               if(is_numeric($phone)) {
+                $phone = test_input($_POST["phone"]);
+               }
+               else{
+                   $phoneErr="Phone number is invalid";
+               }
+              }
+        
+              if (empty($_POST["age"])) {
+                $ageErr = "Field is required";
+              } else {
+                $age = test_input($_POST["age"]);
+              }
+              if (empty($_POST["email1"])) {
+                $emailErr1 = "Field is required";
+              } else {
+                $email1 = test_input($_POST["email1"]);
+                if (!filter_var($email1, FILTER_VALIDATE_EMAIL)) {
+                    $emailErr1 = "Invalid email format";
+                  }
+              }
+              if (empty($_POST["password1"])) {
+                $pwdErr1 = "Field is required";
+              } else {
+                $pwd1 = test_input($_POST["password1"]);
+              }
+          }
+
+        ?>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                 <input placeholder="First Name" type="text" required id="namebox" name="first_name" value="<?php echo $fname;?>" /> <span class="error" > <?php echo $fnameErr;?></span>
                 <input placeholder="Last Name" type="text" required id="namebox" name="last_name" value="<?php echo $lname;?>" /> <span class="error"> <?php echo $lnameErr;?></span>
