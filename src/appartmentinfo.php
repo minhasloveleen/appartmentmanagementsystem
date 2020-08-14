@@ -1,4 +1,5 @@
 <?php 
+    include 'includes/database.php';
     include_once("includes/header.php");
 ?>
 <div class="main">
@@ -7,13 +8,18 @@
     ?>
     <div class="section">
         <div class="message">appartment added successfully</div>
-        <form id="form1">
-            <label for="appartmentdropdown" id="appartmentdropdownlabel">Choose a car</label>
+        <form id="form1" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
+            <label for="appartmentdropdown" id="appartmentdropdownlabel">Select Appartment</label>
             <select name="appartment" id="appartmentdropdown">
-            <option value="1">101</option>
-            <option value="2">102</option>
-            <option value="3">103</option>
-            <option value="4">104</option>
+<?php
+$sql = "SELECT * from appartment";
+$result = $GLOBALS['mysqli']->query($sql);
+$result->num_rows;
+while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+    ?><option value="<?=$row['appartmentno']?>"><?=$row['appartmentno']?></option>
+<?php
+}
+?>
             </select> 
             <input type="submit" name="search" id="search"value="search">
         </form>
@@ -22,53 +28,33 @@
         <tr>
             <th>Appartment no.</th>
             <th>Floor No.</th>
+            <th>Appartment type</th>
             <th>Description</th>
             <th>Status</th>
             <th>Delete/Modify</th>
             
         </tr>
+<?php
+$sql = "SELECT * from appartment";
+if(isset($_GET['search']))
+{
+    $sql="SELECT * from appartment where appartmentno=".$_GET['appartment'];
+}
+
+$result = $GLOBALS['mysqli']->query($sql);
+while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+    ?>
         <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
+            <td><?=$row['appartmentno']?></td>
+            <td><?=$row['floor']?></td>
+            <td><?=$row['appttype']?></td>
+            <td><?=$row['Description']?></td>
+            <td><?=$row['status']?></td>
+            <td>Delete/Modify</td>
         </tr>
-        <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Ernst Handel</td>
-            <td>Roland Mendel</td>
-            <td>Austria</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Island Trading</td>
-            <td>Helen Bennett</td>
-            <td>UK</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Laughing Bacchus Winecellars</td>
-            <td>Yoshi Tannamuri</td>
-            <td>Canada</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Magazzini Alimentari Riuniti</td>
-            <td>Giovanni Rovelli</td>
-            <td>Italy</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
+<?php
+}
+?>
         </table>
     </div>
 </div>
