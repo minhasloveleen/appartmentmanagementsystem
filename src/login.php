@@ -60,6 +60,17 @@ if(isset($_GET["register"]))
                 <input placeholder="<?php echo $pwdErr;?>" type="password" name="password_login" /><br>
             </div>
             <button type="submit" name="login" class="submit1">Login</button>
+            
+            <?php
+            $e=$_SESSION['email'];
+            $q="select * from signup where email='$e'";
+            $result=mysqli_query($q);
+            if($row=mysqli_fetch_array($result))
+            {
+                $e=$row['email];
+            }
+            ?>
+            
         </form>
     </div>
     </div>
