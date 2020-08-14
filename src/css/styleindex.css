@@ -81,11 +81,81 @@ ul {
 .section{
     margin-left:15%;
     margin-top: 100px;
-    padding:1px 16px;
+    padding: 20px 30px;
     float: left;
     overflow: auto;
+    font-size: larger;
+    width:80%;
+}
+#appartmentdropdownlabel{
+  float:left;
+  font-size: 24px;
+}
+#appartmentdropdown{
+  float: left;
+  width:150px;
+  height:40px;
+  font-size: 18px;
+  padding:5px 5px 5px 10px;
+  border-radius: 5px;
+  margin: 0px 15px;
+
+}
+#search{
+  width:100px;
+  margin-left:60px;
+  height: 35px;
+  border: 1px solid teal;
+  text-align: center;
+  text-decoration: none;
+  float:left;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#form1{
+  float: left;
+  width:70%;
+}
+#newappartmentbutton{
+  width:200px;
+  float: right;
+  padding:9px;
+  background-color: rgb(26, 71, 167);
+  text-align: center;
+  text-decoration: none;
+  color:white;
+  font-size: 16px;
+
+  cursor: pointer;
+}
+.message{
+  width:100%;
+  border:2px solid rgb(59, 228, 59);
+  background-color: rgb(213, 255, 213);
+  color:rgb(59, 228, 59) ;
+  padding:10px;
+  text-align: center;
+  margin-bottom:30px;
 }
 
+.infotable {
+  clear: both;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.infotable td, .infotable th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.infotable tr:nth-child(even) {
+  background-color: #dddddd;
+}
   /* footer */
   footer{
   width:100%;
