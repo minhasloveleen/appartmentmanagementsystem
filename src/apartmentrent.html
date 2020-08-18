@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en-CA">
+    <head>
+
+        <title>DELTAMANAGEMENTSYSTEM</title>
+        <meta charset ="UTF-8">
+        <meta name ="description" content="All Solutions at one place">
+        <meta name="author" content ="Manoj">
+        <!-- below for private pages only, remove line for public pages-->
+        <meta name="robots" content="noindex, nofollow">
+        <!-- for responsive website -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- website icon (favicon)-->
+        <link rel="icon" href="images/logo.png" type="image/png" >
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+				<link type="text/css" rel="stylesheet" href="css/styleindex.css" />
+        <link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">   
+    </head>
+    <body>
+            
+<header id="top">
+	<img  src="images/logo.png" alt="logo" style="margin-top:10px;"/>
+    <h1 >Delta <span style="color:#54514d">Management<span></h1>
+    <p> Hi Username <a href="login.php">   Signup</a></p>
+	
+</header>
+
+ 
+        <ul>
+    <li><a class="active" href="tenantdashboard">Dashboard</a></li>
+    <li><a href="#news">Appartment Info</a></li>
+    <li><a href="apartmentrent.html">Rent Appartment</a></li>
+    <li><a href="#about">Available Appartment</a></li>
+    <li><a href="#about">Maintance approval</a></li>
+    <li><a href="#about">Messages</a></li>
+</ul>
+        <!-- Main============================ -->
+
+        <main id="main">
+<div class="appt_div">  
+<form action="/action_page.php">      
+<label for="apartmentsid">Choose a Apartment Number:</label>
+<select name="apartmentsid" id="apartments_number">
+
+		<option >Apartment Number</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>&nbsp;&nbsp;&nbsp;
+	<label for="apart_user">Choose a Apartment User:</label>
+	<select name="apart_user" id="apart_tenant">
+		<option >Apartment Tenant</option>
+    <option value="Loveleen">Loveleen</option>
+    <option value="Manoj">Manoj</option>
+    <option value="Harry">harry</option>
+    <option value="Karthik">Karthik</option>
+  </select>&nbsp;&nbsp;&nbsp;
+	<br><br>
+	<label for="apart_rent">Choose a Apartment Current Rent:</label>
+	<select name="apart_rent" id="apart_current_rent">
+		<option value="disabled selected">Orginal Rent</option>
+    <option value="1">1000$</option>
+    <option value="2">1250$</option>
+    <option value="3">1450$</option>
+    <option value="4">1600$</option>
+  </select>&nbsp;&nbsp;&nbsp;
+	<label for="sin">SIN :</label>
+  <input type="text" id="sin" name="sin"style="width: 300px; height:40px;"><br>
+	<fieldset>      
+        <legend>Monthly Rental Resource Includes</legend>      
+        <input type="checkbox" name="resource" value="Electricity">Electricity<br>      
+        <input type="checkbox" name="resource" value="Heat">Heat<br>     
+        <input type="checkbox" name="resource" value="Water">Water<br>           
+    </fieldset>  <br>
+		<label for="LeaseSign">DateOfLeaseSign:</label>
+  <input type="date" id="LeaseSign" name="LeaseSign" style="width:300px; height:40px;">&nbsp;&nbsp;
+	<label for="LeaseExpire">DateOfLeaseExpire:</label>
+  <input type="date" id="LeaseExpire" name="LeaseExpire" style="width:300px; height:40px;">
+	<br>
+	<br>
+	<label for="myfile">Upload Required Documents</label>
+  <input type="file" id="myfile" name="myfile" multiple><br><br>
+	<input type="submit" value="Submit">
+	</form>
+	</div>
+        </main>        
+<footer id="footer">
+    <p>Copyright @2020 Delta management</p>
+</footer>
+</body>
+</html>
+    </body>
+</html>
+
