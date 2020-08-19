@@ -34,6 +34,20 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             <th>Delete/Modify</th>
             
         </tr>
+            <?php
+                $appartmentno=$_REQUEST['appartmentno'];
+                include "connection.php";
+                $q="delete from appartment where appartmentno='appartmentno'";
+                $res=mysqli_query($obj,$q);
+                if($res>0)
+                {
+	              header("location:appartmentinfo.php");
+                }
+                else
+                {
+	            echo mysqli_error($obj);
+                }
+                ?>
 <?php
 $sql = "SELECT * from appartment";
 if(isset($_GET['search']))
