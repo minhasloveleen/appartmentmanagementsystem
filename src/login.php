@@ -60,6 +60,28 @@ if(isset($_GET["register"]))
                 <input placeholder="<?php echo $pwdErr;?>" type="password" name="password_login" /><br>
             </div>
             <button type="submit" name="login" class="submit1">Login</button>
+            <button type="submit" name="forgetPassword" class="submit1">Forget your Password?</button>
+            <?php session_start();
+?>
+<?php
+$email=$_REQUEST['email'];
+$pass=$_REQUEST['pass'];
+  $link=mysqli_connect("localhost","root","","appartmentmanagementsystem");
+  $g="select * from signin where Name='$email'and Password='$pass'";
+	$result=mysqli_query($link,$g);
+	if($row=mysqli_fetch_array($result))
+	{
+	$_SESSION['email']=$email;
+	echo header("location:home.php?x=done");
+	}
+	else
+	{
+			echo header("location:login.php?x=nodone");
+		
+		//echo mysqli_error($link)."sorry error occur";
+	}
+
+	?>
         </form>
     </div>
     </div>
