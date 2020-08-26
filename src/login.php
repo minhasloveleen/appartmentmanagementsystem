@@ -25,6 +25,26 @@ if(isset($_GET["register"]))
   }
 
 }
+if(isset($_POST["login"]))
+{
+  $sql ="select * from user where email='".$_POST["email_login"]."' and password='".$_POST["password_login"]."'";
+  $result=$GLOBALS['mysqli']->query($sql);
+  if($row = $result->fetch_assoc())
+  {
+    session_start();
+    $_SESSION["userid"] = $row["userid"];
+    $_SESSION["username"] = $row["firstname"];
+    $_SESSION["email"] = $row["email"];
+    if($row["usertype"]==1)
+    header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'admindashboard.php');
+    else
+    header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'tenantdashboard.php');
+  }
+  else{
+    header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'login.php');
+  }
+
+}
 
 ?>
     <div class="app-header" >
@@ -60,28 +80,7 @@ if(isset($_GET["register"]))
                 <input placeholder="<?php echo $pwdErr;?>" type="password" name="password_login" /><br>
             </div>
             <button type="submit" name="login" class="submit1">Login</button>
-            <button type="submit" name="forgetPassword" class="submit1">Forget your Password?</button>
-            <?php session_start();
-?>
-<?php
-$email=$_REQUEST['email'];
-$pass=$_REQUEST['pass'];
-  $link=mysqli_connect("localhost","root","","appartmentmanagementsystem");
-  $g="select * from signin where Name='$email'and Password='$pass'";
-	$result=mysqli_query($link,$g);
-	if($row=mysqli_fetch_array($result))
-	{
-	$_SESSION['email']=$email;
-	echo header("location:home.php?x=done");
-	}
-	else
-	{
-			echo header("location:login.php?x=nodone");
-		
-		//echo mysqli_error($link)."sorry error occur";
-	}
-
-	?>
+            
         </form>
     </div>
     </div>
