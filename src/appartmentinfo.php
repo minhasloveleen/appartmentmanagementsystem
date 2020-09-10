@@ -7,7 +7,7 @@
         include_once("includes/adminmenu.php");
     ?>
     <div class="section">
-        <div class="message">appartment added successfully</div>
+        <div class="message" >appartment added successfully</div>
         <form id="form1" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
             <label for="appartmentdropdown" id="appartmentdropdownlabel">Select Appartment</label>
             <select name="appartment" id="appartmentdropdown">
@@ -16,7 +16,7 @@ $sql = "SELECT * from appartment";
 $result = $GLOBALS['mysqli']->query($sql);
 $result->num_rows;
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-    ?><option value="<?=$row['appartmentno']?>"><?=$row['appartmentno']?></option>
+    ?><option value="<?=$row['appartment']?>"><?=$row['appartment']?></option>
 <?php
 }
 ?>
@@ -39,14 +39,14 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 $sql = "SELECT * from appartment";
 if(isset($_GET['search']))
 {
-    $sql="SELECT * from appartment where appartmentno=".$_GET['appartment'];
+    $sql="SELECT * from appartment where appartment=".$_GET['appartment'];
 }
 
 $result = $GLOBALS['mysqli']->query($sql);
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
     ?>
         <tr>
-            <td><?=$row['appartmentno']?></td>
+            <td><?=$row['appartment']?></td>
             <td><?=$row['floor']?></td>
             <td><?=$row['appttype']?></td>
             <td><?=$row['Description']?></td>
