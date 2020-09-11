@@ -14,9 +14,9 @@
         <form onsubmit="successAlert()" method="post" enctype="multipart/form-data">
         <input type="text" id="fielddropdown" style="width:92.5%;" name="apptno" required placeholder="Appartment no.">
       
-        <input  id="fielddropdown" type="month" id="start" name="start" required 
+        <input  id="fielddropdown" type="month" id="start" name="start" required  
        min="2020-07" value="2020-09">
-        <input type="text" id="fielddropdown" name="size" required placeholder="Enter the payment Amount $">
+        <input type="number" id="fielddropdown" name="amount" min="200" max="5000" required placeholder="Enter the payment Amount $">
         <textarea id="fielddropdown" style="width:937px; height:100px;" name="desc" required placeholder="Message "></textarea>
         <input type="submit" name="add" id="newappartmentbutton" style=" margin-right:50px; margin-top:10px; background-color: green; " value="PAY RENT">
         <br><br><br></form>
