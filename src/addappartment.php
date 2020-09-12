@@ -1,6 +1,9 @@
 <?php 
     include 'includes/database.php';
     include_once("includes/header.php");
+    session_start();
+    if(isset($_SESSION["username"]))
+    {
 ?>
 <?php
 
@@ -22,10 +25,10 @@
         </select>
         <select id="fielddropdown" required  name="type">
         <option value="" default selected>Appartment Type</option>
-        <option value="oneandhalf">1 <sup>1</sup>&frasl;<sub>2</sub></option>
-        <option value="twoandhalf">2 <sup>1</sup>&frasl;<sub>2</sub></option>
-        <option value="threeandhalf">3 <sup>1</sup>&frasl;<sub>2</sub></option>
-        <option value="fourandhalf">4 <sup>1</sup>&frasl;<sub>2</sub></option>
+        <option value="11/2">1 <sup>1</sup>&frasl;<sub>2</sub></option>
+        <option value="21/2">2 <sup>1</sup>&frasl;<sub>2</sub></option>
+        <option value="31/2">3 <sup>1</sup>&frasl;<sub>2</sub></option>
+        <option value="41/2">4 <sup>1</sup>&frasl;<sub>2</sub></option>
         </select>
         <input type="text" id="fielddropdown" name="size" required placeholder="Size of appartment ex 200cm x 200cm">
         <input type="text" id="fielddropdown" name="originalrent" required placeholder="Original rent $">
@@ -43,5 +46,9 @@
 </div>
 
 <?php 
+    }   
+    else{
+        header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'login.php');
+    }
     include_once("includes/footer.php");
 ?>

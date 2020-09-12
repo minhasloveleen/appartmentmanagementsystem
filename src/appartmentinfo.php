@@ -1,21 +1,41 @@
 <?php 
     include 'includes/database.php';
     include_once("includes/header.php");
+     session_start();
+    if(isset($_SESSION["username"]))
+    {
+            
 ?>
 <div class="main">
     <?php 
         include_once("includes/adminmenu.php");
     ?>
     <div class="section">
-        <div class="message" >appartment added successfully</div>
+        <?PHP
+        if(isset($_GET['message']))
+        {
+            ?><div class="message" ><?=$_GET['message']?></div><?php
+        }
+        else
+        {
+            ?><div class="message" style="display:none;" >appartment added successfully</div> <?php
+        }
+         ?>
+        
         <form id="form1" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
             <label for="appartmentdropdown" id="appartmentdropdownlabel">Select Appartment</label>
             <select name="appartment" id="appartmentdropdown">
+                <option value="all">All</option>
 <?php
 $sql = "SELECT * from appartment";
 $result = $GLOBALS['mysqli']->query($sql);
 $result->num_rows;
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+    if(isset($_GET['search']) && $row['appartment']==$_GET['appartment'])
+    {
+        ?><option value="<?=$row['appartment']?>" selected><?=$row['appartment']?></option> 
+        <?php
+    }
     ?><option value="<?=$row['appartment']?>"><?=$row['appartment']?></option>
 <?php
 }
@@ -39,7 +59,14 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 $sql = "SELECT * from appartment";
 if(isset($_GET['search']))
 {
-    $sql="SELECT * from appartment where appartment=".$_GET['appartment'];
+    if($_GET['appartment']=="all")
+    {
+        $sql="SELECT * from appartment" ;
+    }
+    else
+    {
+        $sql="SELECT * from appartment where appartment=".$_GET['appartment'];
+    }
 }
 
 $result = $GLOBALS['mysqli']->query($sql);
@@ -51,14 +78,21 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             <td><?=$row['appttype']?></td>
             <td><?=$row['Description']?></td>
             <td><?=$row['status']?></td>
-            <td><a href="deleteappartment.php?apptno=<?=$row['appartmentno']?>">Delete</a> / <a href="modifyappartment.php?apptno=<?=$row['appartmentno']?>">Modify</a></td>
+            <td><a href="deleteappartment.php?apptno=<?=$row['appartment']?>">Delete</a> / <a href="modifyappartment.php?apptno=<?=$row['appartment']?>">Modify</a></td>
         </tr>
 <?php
 }
 ?>
         </table>
+        </br>
+</br>
     </div>
+
 </div>
 <?php 
+    }   
+    else{
+        header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'login.php');
+    }
     include_once("includes/footer.php");
 ?>
