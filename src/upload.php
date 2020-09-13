@@ -4,7 +4,7 @@ $url1="";
 $url2="";
 $url3="";
 
-
+print_r ($_POST);
 
 
 
@@ -173,32 +173,72 @@ $type=$_POST['type'];
 $size=$_POST['size'];
 $originalrent=$_POST['originalrent'];
 $desc=$_POST['desc'];
-$sql1="select MAX(id) as id from `appartmentmanagement`.`appartment` ";
-$result = $GLOBALS['mysqli']->query($sql1);
-$id=0;
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $id=$row['id']+1;
-  }
-} 
-
-$sql2 = "INSERT INTO `appartmentmanagement`.`appartment`(`appartment`,`floor`,`appttype`,`status`,`floorplan`,`orginalrent`,`Description`)VALUES('$apptno',$floor,'$type','vacant','$size',$originalrent,'$desc');";
-if($url1!="")
-  $sql2.="INSERT INTO `appartmentmanagement`.`appartment_photos`(`id`,`photo`)VALUES($id,'$url1');";
-if($url2!="")
-  $sql2.="INSERT INTO `appartmentmanagement`.`appartment_photos`(`id`,`photo`)VALUES($id,'$url2');";
-if($url3!="")
-  $sql2.="INSERT INTO `appartmentmanagement`.`appartment_photos`(`id`,`photo`)VALUES($id,'$url3');";
-
-echo $sql2;
-$result1 = $GLOBALS['mysqli']->multi_query($sql2);
-if($result1>0 )
+//modify appartment
+if($_POST[add]=="Modify Appartment")
 {
-  header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'appartmentinfo.php?message=addedsucessfully');
+  $id=$_POST['id'];
+  $sql1="select  * from `appartmentmanagement`.`appartment` where appartment=$apptno and id<>$id ";
+  $result = $GLOBALS['mysqli']->query($sql1);
+  if ($result->num_rows > 0){
+    header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'appartmentinfo.php?message=Appartment number needs to be unique!!! unsucessfull attempt');
+  }
+  else{
+    $sql2 = "UPDATE `appartmentmanagement`.`appartment`SET`appartment` = '$apptno',`floor` =$floor,`appttype` ='$type',`size` = '$size',`orginalrent` = $originalrent,`Description` ='$desc' WHERE `id` =$id";
+    echo $sql2;
+    $result1 = $GLOBALS['mysqli']->multi_query($sql2);
+    echo $result1;
+    if($result1>0 )
+    {
+     header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'appartmentinfo.php?message=modify sucessfully');
+    }
+    else{
+      header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'appartmentinfo.php?message=modify unsucessfully');
+    }
+  }
+  
 }
-else
-header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'appartmentinfo.php?message=unsucessfully');
+//add appartment
+else if($_POST[add]=="Add Appartment")
+{
+  $sql1="select  * from `appartmentmanagement`.`appartment` where appartment=$apptno ";
+  $result = $GLOBALS['mysqli']->query($sql1);
+  if ($result->num_rows > 0){
+    header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'appartmentinfo.php?message=Appartment number needs to be unique!!! unsucessfull attempt');
+  }
+  else{
+    $sql1="select MAX(id) as id from `appartmentmanagement`.`appartment` ";
+    $result = $GLOBALS['mysqli']->query($sql1);
+    $id=0;
+    if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+        $id=$row['id']+1;
+      }
+    } 
+
+    $sql2 = "INSERT INTO `appartmentmanagement`.`appartment`(`appartment`,`floor`,`appttype`,`status`,`size`,`orginalrent`,`Description`)VALUES('$apptno',$floor,'$type','vacant','$size',$originalrent,'$desc');";
+    if($url1!="")
+      $sql2.="INSERT INTO `appartmentmanagement`.`appartment_photos`(`id`,`photo`)VALUES($id,'$url1');";
+    if($url2!="")
+      $sql2.="INSERT INTO `appartmentmanagement`.`appartment_photos`(`id`,`photo`)VALUES($id,'$url2');";
+    if($url3!="")
+      $sql2.="INSERT INTO `appartmentmanagement`.`appartment_photos`(`id`,`photo`)VALUES($id,'$url3');";
+
+    echo $sql2;
+    $result1 = $GLOBALS['mysqli']->multi_query($sql2);
+    echo $result1;
+    if($result1>0 )
+    {
+    header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'appartmentinfo.php?message=addedsucessfully');
+    }
+    else{
+      header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'appartmentinfo.php?message=unsucessfully');
+    }
+  }
+  
+
+}
+
 
 
 ?>

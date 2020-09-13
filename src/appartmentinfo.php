@@ -78,7 +78,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             <td><?=$row['appttype']?></td>
             <td><?=$row['Description']?></td>
             <td><?=$row['status']?></td>
-            <td><a href="deleteappartment.php?apptno=<?=$row['appartment']?>">Delete</a> / <a href="modifyappartment.php?apptno=<?=$row['appartment']?>">Modify</a></td>
+            <td><a href="deleteappartment.php?apptno=<?=$row['appartment']?>">Delete</a> / <a href="modifyappartment.php?apptno=<?=$row['id']?>">Modify</a></td>
         </tr>
 <?php
 }

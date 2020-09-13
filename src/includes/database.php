@@ -9,7 +9,8 @@
  */
 
 require_once 'configuration.php';
-
+$GLOBALS['appttypevalue']=['studio','21/2','31/2','41/2','51/2','61/2'];
+$GLOBALS['appttype']=['studio','2<sup>1</sup>&frasl;<sub>2</sub>','3<sup>1</sup>&frasl;<sub>2</sub>','4<sup>1</sup>&frasl;<sub>2</sub>','5<sup>1</sup>&frasl;<sub>2</sub>','6<sup>1</sup>&frasl;<sub>2</sub>'];
 $GLOBALS['mysqli'] = new mysqli(
     $CONFIG_MYSQL_HOST,
     $CONFIG_MYSQL_USER, $CONFIG_MYSQL_PASSWORD,

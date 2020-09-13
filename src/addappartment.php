@@ -25,7 +25,6 @@
         </select>
         <select id="fielddropdown" required  name="type">
         <option value="" default selected>Appartment Type</option>
-        <option value="11/2">1 <sup>1</sup>&frasl;<sub>2</sub></option>
         <option value="21/2">2 <sup>1</sup>&frasl;<sub>2</sub></option>
         <option value="31/2">3 <sup>1</sup>&frasl;<sub>2</sub></option>
         <option value="41/2">4 <sup>1</sup>&frasl;<sub>2</sub></option>
