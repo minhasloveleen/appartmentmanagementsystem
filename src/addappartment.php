@@ -38,6 +38,7 @@
             <input type="file" id="fielddropdown" style="width:400px;" name="fileToUpload2" required accept="image/png, image/jpeg">
             <input type="file" id="fielddropdown"style="width:400px;" name="fileToUpload3" required accept="image/png, image/jpeg">
         </fieldset>
+        
         <input type="submit" name="submit" id="newappartmentbutton" style="float:left; margin-left:15px; margin-top:10px;"value="Cancel">
         <input type="submit" name="add" id="newappartmentbutton" style=" margin-right:50px; margin-top:10px; " value="Add Appartment">
         <br><br><br></form>
