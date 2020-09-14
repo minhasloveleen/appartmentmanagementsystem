@@ -1,5 +1,5 @@
 <?php
-
+include 'includes/database.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -19,8 +20,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 <div class="w3-bar w3-white w3-large">
   <a href="#" class="w3-bar-item w3-button w3-red w3-mobile"><i class="fa fa-bed w3-margin-right"></i>My Appartment</a>
 
-  <a href="#" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Signin</a>
-  <a href="#" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Signup</a>
+  <a href="login.php" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Signin</a>
 </div>
 <!-- Header -->
 <header class="w3-display-container w3-content" style="max-width:1500px;">
@@ -34,180 +34,36 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 <!-- Page content -->
 <div class="w3-content" style="max-width:1532px;">
 
-  <div class="w3-bar w3-white w3-large">
-  <a href="#rooms" class="w3-bar-item w3-button w3-mobile">5 1/2</a>
-  <a href="#about" class="w3-bar-item w3-button w3-mobile">4 1/2</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-mobile">3 1/2</a>
-  </div>
+<div class="tab">
+                <button class="tablinks" id="btnHtml" onclick="showProject(event, 'html')">Studio</button>
+                <button class="tablinks" id="btnAndroid" onclick="showProject(event, 'android')">&nbsp;2<sup>1</sup>&frasl;<sub>2</sub>&nbsp;</button>
+                <button class="tablinks" id="btnCpp" onclick="showProject(event, 'cpp')">&nbsp;3<sup>1</sup>&frasl;<sub>2</sub>&nbsp;</button>
+                <button class="tablinks" id="btnReact" onclick="showProject(event, 'react')">&nbsp;4<sup>1</sup>&frasl;<sub>2</sub>&nbsp;</button>
+                <button class="tablinks" id="btnJs" onclick="showProject(event, 'js')">&nbsp;5<sup>1</sup>&frasl;<sub>2</sub>&nbsp;</button>
+
+            </div>
   
   
 
   <div class="w3-row-padding w3-padding-16">
+  <?php 
+  $sql = "SELECT * from appartment where status='vacant'";
+  $result = $GLOBALS['mysqli']->query($sql);
+while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+  ?>
     <div class="w3-third w3-margin-bottom">
       <img src="images/room_single.jpg" alt="Norway" style="width:100%">
       <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $99</h6>
+        <h6 class="w3-opacity"> From $<?=$row['orginalrent']?></h6>
         <p>All Included</p>
-        <p>5<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+        <p> <?=$row['appttype']?></p>
         <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
       </div>
     </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_double.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3> Premium Appartment</h3>
-        <h6 class="w3-opacity">From $149</h6>
-        <p>All Included</p>
-        <p>3<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_deluxe.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $199</h6>
-        <p>All Included</p>
-        <p>4<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i> <i class="fa fa-glass"></i> <i class="fa fa-cutlery"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_single.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p>All Included</p>
-        <p>5<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_single.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p>All Included</p>
-        <p>5<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_single.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p>All Included</p>
-        <p>5<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_double.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Double Room</h3>
-        <h6 class="w3-opacity">From $149</h6>
-        <p>Queen-size bed</p>
-        <p>5<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_single.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p>All Included</p>
-        <p>5<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_single.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p>All Included</p>
-        <p>5<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_double.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Double Room</h3>
-        <h6 class="w3-opacity">From $149</h6>
-        <p>Queen-size bed</p>
-        <p>3<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_single.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p>All Included</p>
-        <p>5<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_single.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p>All Included</p>
-        <p>3<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_double.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Double Room</h3>
-        <h6 class="w3-opacity">From $149</h6>
-        <p>Queen-size bed</p>
-        <p>4<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_single.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p>All Included</p>
-        <p>3<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="images/room_single.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Fully Furnished</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p>All Included</p>
-        <p>5<sup>1/2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Details</button>
-      </div>
-    </div>
+    <?php
+}
+    ?>
+    
   </div>
 
  
@@ -227,7 +83,21 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     <?php 
     if(isset($_POST['submit']))
     {
-      
+      date_default_timezone_set("America/New_York");
+      $date=date("Y-m-d h:i:sa");
+      $name=$_POST['name'];
+      $email=$_POST['email'];
+      $message=$_POST['message'];
+      $sql="insert into queries(name,email,message,time) value('$name','$email','$message','$date')";
+      $result = $GLOBALS['mysqli']->query($sql);
+      if($result)
+      {
+        echo "<script type='text/javascript'>alert('thank you! message has been sent');</script>";
+      }
+      else
+      {
+        echo "<script type='text/javascript'>alert('Sorry! Technical error.. try again...');</script>";
+      }
     }
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >

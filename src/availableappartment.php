@@ -25,19 +25,7 @@
         </tr>
            
 <?php
-$sql = "SELECT * from appartment";
-if(isset($_GET['search']))
-{
-    if($_GET['appartment']=="all")
-    {
-        $sql="SELECT * from appartment" ;
-    }
-    else
-    {
-        $sql="SELECT * from appartment where appartment=".$_GET['appartment'];
-    }
-}
-
+$sql = "SELECT * from appartment where status='vacant'";
 $result = $GLOBALS['mysqli']->query($sql);
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
     ?>

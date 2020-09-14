@@ -4,5 +4,5 @@
     <li><a href="#contact">Rent Appartment</a></li>
     <li><a href="availableappartment.php">Available Appartment</a></li>
     <li><a href="#about">Maintance approval</a></li>
-    <li><a href="#about">Messages</a></li>
+    <li><a href="message.php">Messages</a></li>
 </ul>

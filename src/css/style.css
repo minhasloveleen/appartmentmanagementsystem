@@ -10,6 +10,32 @@ body {
   margin:0px;
 }
 
+.tab {
+  top: 0;
+  width: 100%;
+  height: auto;
+  margin-top: 2rem;
+  align-content: center;
+  overflow: hidden;
+  text-align: center;
+  z-index: 900;
+}
+
+
+.tab button {
+  box-shadow: 0 0 0.4rem rgba(46, 12, 56, 0.699);
+  background-color: rgb(211, 191, 236);
+  margin: .5rem;
+  border-radius: 4rem;
+  border-width: 0rem;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 2rem;
+  font-family: 'src-code-pro';
+  color: rgb(40, 33, 44);
+}
 
 
 /* Create two columns/boxes that floats next to each other */
