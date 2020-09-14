@@ -224,11 +224,17 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     <i class="fa fa-map-marker w3-text-red" style="width:30px"></i> 123 Montreal, Quebec, CA<br>
     <i class="fa fa-phone w3-text-red" style="width:30px"></i> Phone: +1 1234567890<br>
     <i class="fa fa-envelope w3-text-red" style="width:30px"> </i> Email: mail@mail.com<br>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required name="Message"></p>
-      <p><button class="w3-button w3-black w3-padding-large" type="submit">SEND MESSAGE</button></p>
+    <?php 
+    if(isset($_POST['submit']))
+    {
+      
+    }
+    ?>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="name"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="email"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required name="message"></p>
+      <p><button class="w3-button w3-black w3-padding-large" name="submit" type="submit">SEND MESSAGE</button></p>
     </form>
   </div>
 
