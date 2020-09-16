@@ -6,7 +6,7 @@
         include_once("includes/adminmenu.php");
     ?>
     <div class="section">
-        <h1>minhas</h1>
+        <div style="width:100px; height:100px;"></div>
     </div>
 </div>
 <?php 
