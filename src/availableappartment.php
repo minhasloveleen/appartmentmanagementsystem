@@ -34,7 +34,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             <td><?=$row['floor']?></td>
             <td><?=$row['appttype']?></td>
             <td><?=$row['Description']?></td>
-            <td><a href="rentappartment.php">click here</td>
+            <td><a href="apartmentrent.php?appt=<?=$row['appartment']?>">click here</td>
             </tr>
 <?php
 }

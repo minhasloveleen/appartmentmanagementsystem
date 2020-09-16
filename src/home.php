@@ -83,7 +83,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
     <?php 
     if(isset($_POST['submit']))
     {
-      date_default_timezone_set("America/New_York");
+      date_default_timezone_set("America/Toronto");
       $date=date("Y-m-d h:i:sa");
       $name=$_POST['name'];
       $email=$_POST['email'];

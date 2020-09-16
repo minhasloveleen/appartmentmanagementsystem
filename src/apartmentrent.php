@@ -13,7 +13,7 @@
     ?>
     <div class="section">
         <h1>Rent an Appartment</h1>
-        <div class="message"></div>
+        
         <form action="rentingappartment.php" enctype="multipart/form-data" method="post">
             <select id="fielddropdown"  required  name="type">
             <option value="" default selected>Appartment</option>
@@ -22,8 +22,13 @@
             $result = $GLOBALS['mysqli']->query($sql);
             $result->num_rows;
             while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                ?><option value="<?=$row['id']?>"><?=$row['appartment']?></option>
+                if($_GET['appt']==$row['appartment'])
+                {?><option value="<?=$row['id']?>" selected><?=$row['appartment']?></option>
+                    <?php
+                }
+                else{?><option value="<?=$row['id']?>"><?=$row['appartment']?></option>
                 <?php
+                }
             }
             ?>
             </select>

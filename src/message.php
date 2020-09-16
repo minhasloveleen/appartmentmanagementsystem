@@ -40,6 +40,6 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
     else{
         header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'login.php');
     }
-   // include_once("includes/footer.php");
+    include_once("includes/footer.php");
 ?>
 
