@@ -183,7 +183,14 @@ if($_POST[add]=="Modify Appartment")
     header('Location:'.$GLOBALS['CONFIG_CLIENT_PORTAL_ROOT_URL'].'appartmentinfo.php?message=Appartment number needs to be unique!!! unsucessfull attempt');
   }
   else{
-    $sql2 = "UPDATE `appartmentmanagement`.`appartment`SET`appartment` = '$apptno',`floor` =$floor,`appttype` ='$type',`size` = '$size',`orginalrent` = $originalrent,`Description` ='$desc' WHERE `id` =$id";
+    $sql2 = "UPDATE `appartmentmanagement`.`appartment`SET`appartment` = '$apptno',`floor` =$floor,`appttype` ='$type',`size` = '$size',`orginalrent` = $originalrent,`Description` ='$desc' WHERE `id` =$id;";
+    $sql2.="DELETE FROM `appartmentmanagement`.`appartment_photos`WHERE `id` =$id;";
+    if($url1!="")
+      $sql2.="INSERT INTO `appartmentmanagement`.`appartment_photos`(`id`,`photo`)VALUES($id,'$url1');";
+    if($url2!="")
+      $sql2.="INSERT INTO `appartmentmanagement`.`appartment_photos`(`id`,`photo`)VALUES($id,'$url2');";
+    if($url3!="")
+      $sql2.="INSERT INTO `appartmentmanagement`.`appartment_photos`(`id`,`photo`)VALUES($id,'$url3');";
     echo $sql2;
     $result1 = $GLOBALS['mysqli']->multi_query($sql2);
     echo $result1;

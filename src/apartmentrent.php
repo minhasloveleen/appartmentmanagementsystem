@@ -71,7 +71,7 @@
                 }
                 ?>
                 </select>
-                <input type="text" id="fielddropdown" style="width:35.5%;" name="sin21" required placeholder="Sin No. SubTenant1">
+                <input type="text" id="fielddropdown" style="width:35.5%;" name="sin21" placeholder="Sin No. SubTenant1">
                 <select id="fielddropdown"   name="subTenant2">
                 <option value="" default selected>SubTenant 2</option>
                 <?PHP 
@@ -84,7 +84,7 @@
                 }
                 ?>
                 </select>
-                <input type="text" id="fielddropdown" style="width:35.5%;" name="sin22" required placeholder="Sin No. SubTenant2">
+                <input type="text" id="fielddropdown" style="width:35.5%;" name="sin22"placeholder="Sin No. SubTenant2">
                 <select id="fielddropdown"   name="subTenant3">
                 <option value="" default selected>SubTenant 3</option>
                 <?PHP 
@@ -97,7 +97,7 @@
                 }
                 ?>
                 </select>
-                <input type="text" id="fielddropdown" style="width:35.5%;" name="sin23" required placeholder="Sin No. SubTenant3">
+                <input type="text" id="fielddropdown" style="width:35.5%;" name="sin23"  placeholder="Sin No. SubTenant3">
             </fieldset>
             <textarea id="fielddropdown" style="width:937px; height:100px;" name="desc" placeholder="Any thing extra to specify"></textarea>
             <p style="width:900px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scan the pdf version of Lease: <input type="file" id="fielddropdown" style="width:400px;" name="fileToUpload" required ></p>

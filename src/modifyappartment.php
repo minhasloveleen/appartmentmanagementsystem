@@ -21,7 +21,7 @@
         <h1 style="margin-left:15px">Modify Appartment</h1>
         <form action="upload.php" method="post" enctype="multipart/form-data">
         <input type="hidden"  name="id" value="<?=$_GET['apptno']?>" >
-        <input type="text" id="fielddropdown" style="width:92.5%;" name="apptno" value="<?=$row['appartment']?>" required placeholder="Appartment no.">
+        <input type="text" id="fielddropdown" style="width:82.5%;" name="apptno" value="<?=$row['appartment']?>" required placeholder="Appartment no.">
         <select id="fielddropdown" name="floor" required  >
         <?php
         $sql="SELECT * from floor";
@@ -58,7 +58,8 @@
         <input type="text" id="fielddropdown" name="originalrent"  value="<?=$row['orginalrent']?>" required placeholder="Original rent $">
         <textarea id="fielddropdown" style="width:937px; height:100px;" name="desc"   required placeholder="Description about the appartment"><?=$row['Description']?></textarea>
         <fieldset id="fieldsetid">
-            <legend>Add pictures</legend>
+            <legend>Change or Add pictures</legend>
+            <div style="width:100%; word-wrap: break-word; border:2px solid #e8e107; background-color:#ede853">NOTE: If you want to change a picture it will default delete all the picture and add the new pictures</div>
             <?php
             $sql2="SELECT * from appartment_photos where id=".$_GET['apptno'];
             $result2 = $GLOBALS['mysqli']->query($sql2);
